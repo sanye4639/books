@@ -1,4 +1,3 @@
-
 @extends('admin.common')
 @section('content')
     <div class="tpl-content-wrapper">
@@ -67,4 +66,5 @@
             <div class="tpl-alert"></div>
         </div>
     </div>
+
 @stop

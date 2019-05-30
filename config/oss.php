@@ -6,5 +6,6 @@ return [
     'AccessKeySecret' => env('ALIOSS_KEYSECRET', null),             // secret
     'BucketName' => env('ALIOSS_BUCKETNAME', null),                 // bucket
     'AccessCity' => env('ALIOSS_CITY', null),                       // city
-    'OSSDomain' => env('ALIOSS_DOMAIN', 'www.sanye666.xin')         // OSS 域名
+    'OSSDomain' => env('ALIOSS_DOMAIN', 'www.sanye666.top')         // OSS 域名
+
 ];

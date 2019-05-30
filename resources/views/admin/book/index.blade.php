@@ -1,4 +1,3 @@
-
 @extends('admin.common')
 @section('content')
     <style>
@@ -329,3 +328,4 @@
         }
     </script>
 @stop
+

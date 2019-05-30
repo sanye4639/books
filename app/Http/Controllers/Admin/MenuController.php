@@ -100,4 +100,5 @@ class MenuController extends Controller {
         Cache::forget('menu_children');
         return redirect()->route('menu.index')->with('flash_message','Menu deleted!');
     }
+
 }

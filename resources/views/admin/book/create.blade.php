@@ -1,4 +1,3 @@
-
 @extends('admin.common')
 @section('content')
     <div class="tpl-content-wrapper">

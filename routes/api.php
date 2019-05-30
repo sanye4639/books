@@ -25,7 +25,15 @@ Route::group(['middleware'=>['cross','checkHeader']],function() {
     Route::post('chapterList_v2', 'Api\V2\BookController@chapterList');
     Route::post('search_v2', 'Api\V2\BookController@search');
 
+    Route::post('index_v3', 'Api\V3\IndexController@index');
+    Route::post('bookList_v3', 'Api\V3\BookController@index');
+    Route::post('detail_v3', 'Api\V3\BookController@detail');
+    Route::post('bookContent_v3', 'Api\V3\BookController@bookContent');
+    Route::post('chapterList_v3', 'Api\V3\BookController@chapterList');
+    Route::post('search_v3', 'Api\V3\BookController@search');
+
     Route::post('doLogin', 'Api\LoginController@doLogin');
     Route::post('doReg', 'Api\LoginController@doReg');
 });
+
 

@@ -7,3 +7,4 @@ parmars:[1,"App\\User"]
 [2018-07-30 16:22:10]select `roles`.*, `model_has_roles`.`model_id` as `pivot_model_id`, `model_has_roles`.`role_id` as `pivot_role_id` from `roles` inner join `model_has_roles` on `roles`.`id` = `model_has_roles`.`role_id` where `model_has_roles`.`model_id` = ? and `model_has_roles`.`model_type` = ?
 parmars:[1,"App\\User"]
 
+

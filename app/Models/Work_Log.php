@@ -23,4 +23,5 @@ class Work_Log extends Model{
     {
         return $this->belongsTo('App\Models\Admin','admin_id');
     }
+
 }

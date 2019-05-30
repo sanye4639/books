@@ -67,4 +67,5 @@
             <div class="tpl-alert"></div>
         </div>
     </div>
+
 @stop

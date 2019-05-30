@@ -1,4 +1,3 @@
-
 @extends('admin.common')
 @section('content')
    <script src="{{config('oss.OSSDomain')}}asset/js/echarts.min.js"></script>

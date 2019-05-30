@@ -19,6 +19,7 @@ Route::get('/','Home\IndexController@index');
 //       测试代码
 //});
 
+
 Route::get('login', 'Home\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Home\LoginController@login');
 Route::post('logout', 'Home\LoginController@logout')->name('logout');
@@ -77,6 +78,7 @@ Route::group(['prefix' => 'admin'],function() {
                 Route::any('create','Admin\BannerController@create');
                 Route::any('update/{id}','Admin\BannerController@update')->where('id','[0-9]+');
             });
+
             //系统管理
             Route::resource('visitor', 'Admin\VisitorController');
             Route::resource('search_log', 'Admin\Search_LogController');

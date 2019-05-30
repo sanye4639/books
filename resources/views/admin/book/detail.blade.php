@@ -1,4 +1,3 @@
-
 @extends('admin.common')
 @section('content')
     <style>

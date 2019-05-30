@@ -335,4 +335,3 @@ class BooksController extends Controller{
         }
     }
 }
-

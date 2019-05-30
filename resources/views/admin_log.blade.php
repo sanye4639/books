@@ -41,4 +41,3 @@
 <script src="{{config('oss.OSSDomain')}}asset/login/js/scripts.js"></script>
 </body>
 </html>
-
