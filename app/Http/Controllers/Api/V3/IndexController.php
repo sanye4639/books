@@ -22,7 +22,7 @@ class IndexController extends Controller{
             ->get(['id','name','pic','writer','intro','over','type'])
             ->each(function ($item){
                 $item->over  = ($item->over == 1)?'连载':'完结';
-                $item->type  = get_bookType($item->type);
+                $item->type  = get_bookType2($item->type);
             });
 
         /*
@@ -40,7 +40,7 @@ class IndexController extends Controller{
         foreach($data['home_zone'] as $key => $val){
             foreach($home_data as $k=>$v){
                 $v->over  = ($v->over == 1)?'连载':'完结';
-                $v->type  = get_bookType($v->type);
+                $v->type  = get_bookType2($v->type);
                 if($val['type'] == $v->tj){
                     $data['home_zone'][$key]['datas'][] = $v;
                 }

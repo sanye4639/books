@@ -13,9 +13,12 @@ use Auth;
 
 class BooksController extends Controller{
     public $tj_info;
+    protected $booksChapter;
+
     public function __construct()
     {
         $this->tj_info = get_tj_info(-1);
+        $this->booksChapter = 'booksChapter';
     }
     /*
      * 首页
@@ -158,7 +161,7 @@ class BooksController extends Controller{
         $orderBy = Input::get('orderBy');
         $searchArr = Input::except('page');
         $data = Books::select(['id','name'])->find($id);
-        $chapter_tableName = 'booksChapter.book_chapter_'.$id%100;
+        $chapter_tableName = $this->booksChapter.'.book_chapter_'.$id%100;
         if($chapter_id == -1){
             if($showType == 'img'){
                 $chapterList = DB::table($chapter_tableName)
@@ -234,7 +237,7 @@ class BooksController extends Controller{
         if($recycle == 'onlyTrashed'){
             $bucket = config('oss.BucketName');
             foreach ($ids as $v){
-                $chapter_tableName = 'booksChapter.book_chapter_'.$v%100;
+                $chapter_tableName = $this->booksChapter.'.book_chapter_'.$v%100;
                 /*获取被软删除的数据*/
                 $data = Books::select(['type','name'])->onlyTrashed()->find($v);
                 $object = 'books/'.$data['type'].'/'.$data['name'];
@@ -252,7 +255,7 @@ class BooksController extends Controller{
 
             if(!$book_id) return response()->json(['msg'=>'缺少小说ID','status'=>0]);
 
-            $chapter_tableName = 'booksChapter.book_chapter_'.$book_id%100;
+            $chapter_tableName = $this->booksChapter.'.book_chapter_'.$book_id%100;
             $chapter_data = DB::table($chapter_tableName)->select(['oss_url'])->whereIn('id',$ids)->get();
             foreach ($chapter_data as $v){
                 /*获取OSS 指定bucket下的文件名*/
@@ -285,7 +288,7 @@ class BooksController extends Controller{
     * 更改章节内容小说
     * */
     public function update_chapter($id){
-        $chapter_tableName = 'booksChapter.book_chapter_'.$id%100;
+        $chapter_tableName = $this->booksChapter.'.book_chapter_'.$id%100;
         $chapter_id = Input::get('chapter_id',0);
         $content = Input::get('content','');
         if(empty($content))return response()->json(['msg'=>'章节内容不能为空','status'=> 0]);
@@ -322,7 +325,7 @@ class BooksController extends Controller{
       * */
     public function execPythonChapter($id){
         $chapter_id = Input::get('chapter_id',0);
-        $chapter_tableName = 'booksChapter.book_chapter_'.$id%100;
+        $chapter_tableName = $this->booksChapter.'.book_chapter_'.$id%100;
         $data = DB::table($chapter_tableName)->select(['url','oss_url'])->whereId($chapter_id)->first();
         if(count($data)>0){
             $data = get_object_vars($data);
